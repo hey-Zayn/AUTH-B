@@ -4,10 +4,12 @@ const app = express();
 const connectionDB = require("./DB/connectionDB");
 const router = require("./Routes/auth.router");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser()); // allow us to parser incoming cookies 
 app.use('/',router);
 
 connectionDB();
